@@ -13,6 +13,6 @@ public class JumpBoost : MonoBehaviour
         Debug.Log("Jump BOOST!");
 
         PlayerBehavior Player = collision.gameObject.GetComponent<PlayerBehavior>();
-        Player.BoostSpeed(BoostMultiplier, BoostSeconds);
+        Player.JumpBoost(BoostMultiplier, BoostSeconds);
     }
 }
