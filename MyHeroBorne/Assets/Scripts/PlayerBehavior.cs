@@ -17,6 +17,7 @@ public class PlayerBehavior : MonoBehaviour
     private float hInput;
     private Rigidbody _rb;
     private CapsuleCollider _col;
+    private GameBehavior _gameManager;
     private bool doJump = false;
     private bool doShoot = false;
 
@@ -24,6 +25,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<CapsuleCollider>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
 
     void Update()
@@ -71,7 +73,15 @@ public class PlayerBehavior : MonoBehaviour
         return grounded;
     }
 
-   private float speedMultiplier;
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            _gameManager.HP -= 1;
+        }
+    }
+
+    private float speedMultiplier;
 
     public void BoostSpeed(float multiplier, float seconds)
     {
