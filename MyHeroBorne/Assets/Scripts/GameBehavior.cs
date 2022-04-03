@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameBehavior : MonoBehaviour
 {
-    public string labelText = "Collect all items and win your freedom!";
+    public string labelText = "Collect all green items and win your freedom!";
     public bool showWinScreen = false;
     public bool showLossScreen = false;
     public int maxItems = 2;
@@ -44,20 +44,20 @@ public class GameBehavior : MonoBehaviour
             _playerHP = value;
             if (_playerHP <= 0)
             {
-                labelText = "You want another life with that?";
+                labelText = "Want to try again?";
                 showLossScreen = true;
                 Time.timeScale = 0;
             }
             else
             {
-                labelText = "Ouch... that's got to hurt.";
+                labelText = "Sucks to suck.";
             }
         }
     }
 
     void RestartLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1.0f;
     }
 
