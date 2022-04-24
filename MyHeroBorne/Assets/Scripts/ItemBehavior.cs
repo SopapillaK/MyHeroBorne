@@ -15,9 +15,11 @@ public class ItemBehavior : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
+            
             Destroy(this.transform.parent.gameObject);
             Debug.Log("Item collected!");
-
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
             gameManager.Items += 1;
         }
     }

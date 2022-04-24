@@ -80,6 +80,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Bullet(Clone)")
         {
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
             EnemyLives -= 1;
             Debug.Log("Critical hit!");
         }
